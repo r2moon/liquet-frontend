@@ -10,6 +10,7 @@ import {
   Box,
   Button
 } from "@chakra-ui/react"
+import toast from "react-hot-toast"
 import NextLink from "next/link"
 import { HamburgerIcon } from "@chakra-ui/icons"
 import { useRouter } from "next/router"
@@ -25,7 +26,7 @@ import { useAppSelector } from "redux/hooks"
 
 const Header = () => {
   const { disconnect, switchChain, connect } = useWallet()
-  const { account, chainId, balance } = useAppSelector((state) => state.WalletState)
+  const { account, chainId, balance, isKeplrWallet } = useAppSelector((state) => state.WalletState)
   console.log(account, chainId, balance.toString())
   const {
     isOpen: isOpenConnectModal,
@@ -34,6 +35,16 @@ const Header = () => {
   } = useDisclosure() // from chakra ui modal
 
   const router = useRouter()
+
+  const handleConnect = () => {
+    if (isKeplrWallet) {
+      connect()
+    } else {
+      toast.error(
+        "It seems like you don't have Keplr extention installed in your browser. Install Keplr, reload the page and try again"
+      )
+    }
+  }
 
   // const renderUsdcFaucet = () => {
   //   return (
@@ -103,7 +114,7 @@ const Header = () => {
         </Menu>
       )
     return (
-      <Button className="ms-button ms-button--small ms-button--space" onClick={connect}>
+      <Button className="ms-button ms-button--small ms-button--space" onClick={handleConnect}>
         <Text m="auto 0">Connect</Text>
       </Button>
     )

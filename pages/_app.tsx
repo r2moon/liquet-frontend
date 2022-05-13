@@ -27,20 +27,38 @@ const InnerApp: FC<AppProps> = ({ Component, pageProps }) => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
+    const keplrCheckPromise = new Promise<void>((accept, _reject) => {
+      // 1. Every one second, check if Keplr was injected to the page
+      const keplrCheckInterval = setInterval(async () => {
+        const { keplr, getOfflineSigner, getEnigmaUtils } = window as any
+        const isKeplrWallet = !!keplr && !!getOfflineSigner && !!getEnigmaUtils
+
+        if (isKeplrWallet) {
+          console.log("true")
+          // Keplr is present, stop checking
+          clearInterval(keplrCheckInterval)
+          dispatch(WalletStateActions.setIsKeplrWallet(isKeplrWallet))
+          dispatch(WalletStateActions.setKeplrWallet(keplr))
+          accept()
+        } else {
+          console.log("Keplr is not installed")
+        }
+      }, 1000)
+    })
+
     async function init() {
-      if (typeof (window as any).ethereum === "undefined")
-        return toast.error("Please install metamask wallet to use Matrixswap")
-      const { ethereum } = window as any
-      await connect()
-      const chainId = +(await ethereum.request({ method: "eth_chainId" }))
-      dispatch(WalletStateActions.setChainId(chainId))
-      if (chainId !== Number(process.env.NEXT_PUBLIC_NETWORK_ID)) {
-        await switchChain()
-      }
-      ethereum.on("chainChanged", (chainId: string) => dispatch(WalletStateActions.setChainId(+chainId)))
-      ethereum.on("accountsChanged", (accounts: string[]) =>
-        dispatch(WalletStateActions.setAccount(accounts[0]))
-      )
+      await keplrCheckPromise
+      // const { ethereum } = window as any
+      // await connect()
+      // const chainId = +(await ethereum.request({ method: "eth_chainId" }))
+      // dispatch(WalletStateActions.setChainId(chainId))
+      // if (chainId !== Number(process.env.NEXT_PUBLIC_NETWORK_ID)) {
+      //   await switchChain()
+      // }
+      // ethereum.on("chainChanged", (chainId: string) => dispatch(WalletStateActions.setChainId(+chainId)))
+      // ethereum.on("accountsChanged", (accounts: string[]) =>
+      //   dispatch(WalletStateActions.setAccount(accounts[0]))
+      // )
     }
     init()
   }, [dispatch, switchChain, connect])

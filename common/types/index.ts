@@ -132,4 +132,7 @@ export interface Wallet extends Balances {
   account: string
   chainId: number
   signer: Signer | undefined
+  isKeplrWallet: boolean
+  keplrWallet: any
+  isAuthorized: boolean
 }

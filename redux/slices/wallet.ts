@@ -8,7 +8,10 @@ const initialState: Wallet = {
   balance: Big(0),
   usdcBalance: Big(0),
   chainId: Number(process.env.NEXT_PUBLIC_NETWORK_ID),
-  signer: undefined
+  signer: undefined,
+  isKeplrWallet: false,
+  keplrWallet: undefined,
+  isAuthorized: false
 }
 
 const slice = createSlice({
@@ -29,6 +32,15 @@ const slice = createSlice({
     },
     setChainId: (state, action: PayloadAction<number>) => {
       state.chainId = action.payload
+    },
+    setIsKeplrWallet: (state, action: PayloadAction<boolean>) => {
+      state.isKeplrWallet = action.payload
+    },
+    setKeplrWallet: (state, action: PayloadAction<any>) => {
+      state.keplrWallet = action.payload
+    },
+    setIsAuthorized: (state, action: PayloadAction<boolean>) => {
+      state.isAuthorized = action.payload
     },
     setSigner: (state, action: PayloadAction<Signer>) => {
       state.signer = action.payload

@@ -1,0 +1,47 @@
+.ms-layout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: $ui_color_layout_bg;
+  
+  &__bg {
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background: 
+      linear-gradient(200deg, rgba(6,36,21,1) 0%, rgba(14,37,38,0) 36%, rgba(14,37,38,0) 92%, rgba(6,36,21,1) 100%),
+      linear-gradient(150deg, rgba(6,36,21,1) 0%, rgba(14,37,38,0) 16%, rgba(14,37,38,0) 92%, rgba(6,36,21,1) 100%), 
+      radial-gradient(circle, rgba(14,37,38,1) 0%, rgba(8,25,28,1) 52%, rgba(5,21,24,1) 100%);
+    overflow: hidden;
+  }
+
+  &__header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+ 
+    @include screenSize('desktop') {
+      height: rem(72);
+      align-items: center;
+    }
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    width: 100%;
+ 
+    @include screenSize('desktop') {
+      height: calc(100vh - rem(72));
+      min-height: rem(600);
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.ms-chart {
+  height: rem(600);
+  filter:
+    hue-rotate(345deg) 
+    contrast(1.1);
+  
+
+  @include screenSize('desktop') {
+    height: auto;
+  }
+}

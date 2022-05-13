@@ -1,0 +1,28 @@
+.ms-helper {
+
+  &__success { 
+    color: $ui_color_text_success;
+  }
+
+  &__warning { 
+    color: $ui_color_text_warning;
+  }
+  
+  &__only-mobile {
+
+    @include screenSize('tablet') {
+      display: none !important;
+    }
+  }
+  
+  &__not-mobile {
+
+    @include screenSize('onMobile') {
+      display: none !important;
+    }
+  }
+
+  &__hidden {
+    display: none !important;
+  }
+}

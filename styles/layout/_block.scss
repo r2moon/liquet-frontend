@@ -1,0 +1,58 @@
+.ms-block {
+  background-color: $ui_color_block_bg;
+  border-radius: rem(12);
+  box-shadow: 0 rem(30) rem(30) rem(-30) $ui_color_block_shadow;
+  overflow: hidden;
+  overflow-y: auto;
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $ui_color_block_dark_bg;
+    border-bottom: rem(1) solid $ui_color_block_light_bg;
+
+    &__title,
+    &__tab {
+      padding: rem(10) rem(24) rem(8);
+      font-weight: 700;
+      font-weight: rem(14);
+      transition: all 0.15s ease-out 0s;
+    }
+
+    &__tab {
+      $tab: &;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: rem(10) rem(12) rem(8);
+      text-align: center;
+      cursor: pointer;
+
+      @include screenSize('tablet') {
+        flex: initial;
+      }
+
+      &:not(#{$tab}--active):hover {
+        background-color: $ui_color_block_light_bg;
+      }
+
+      &:first-child {
+        padding: rem(10) rem(12) rem(8) rem(24);
+      }
+
+      &:last-child {
+        padding: rem(10) rem(24) rem(8) rem(12);
+      }
+
+      &--active {
+        box-shadow: 0 rem(1) 0 0 $ui_color_block_active_border;
+        cursor: default;
+      }
+    }
+  }
+
+  &--no-scroll {
+    overflow-y: hidden;
+  }
+}

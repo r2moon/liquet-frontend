@@ -1,0 +1,79 @@
+@use "sass:color";
+
+@import "./function";
+
+// COLORS
+// Colors must be in HSL(A)
+// For themes, switch from scss props to css properties
+
+// Base colors:
+$color_deepBlack: hsla(220, 100%, 1%, 1);
+$color_blueBlack: hsl(197, 78%, 11%);
+$color_blueishBlack: hsl(197, 83%, 6%);
+$color_darkTeal: hsla(194, 80%, 10%, 1);
+$color_darkerTeal: hsla(234, 17%, 43%, 0.15);
+$color_potionBlue: hsl(195, 55%, 26%);
+$color_potionBlueish: hsl(193, 32%, 37%);
+$color_deelBlue: hsl(195, 15%, 18%);
+$color_oceanBlue: hsla(191, 79%, 48%, 1);
+$color_yellowGreen: hsl(123, 90%, 32%);
+$color_yellowishGreen: hsl(123, 89%, 38%);
+$color_veryGreen: hsl(123, 72%, 56%);
+$color_cyanGreen: hsl(137, 89%, 44%);
+$color_cyanishGreen: hsl(137, 98%, 54%);
+$color_lightBlue: hsl(176, 88%, 41%);
+$color_lightishBlue: hsl(176, 85%, 51%);
+$color_vividRed: hsl(0, 76%, 53%);
+$color_featherBlue: hsla(173, 89%, 41%, .07);
+$color_featherGrey: hsla(234, 17%, 43%, 1);
+$color_silverWhite: hsla(214, 17%, 78%, 1);
+$color_pureWhite: hsla(0, 0%, 100%, 1);
+
+// UI colors:
+$ui_color_text: $color_pureWhite;
+$ui_color_text_alt: $color_silverWhite;
+$ui_color_text_error: $color_vividRed;
+$ui_color_link_hover: $color_cyanGreen;
+$ui_color_button_hover_bg: color.adjust($color_pureWhite, $alpha: -0.6);
+$ui_color_button_alt_hover_bg: color.adjust($color_pureWhite, $alpha: -0.8);
+$ui_color_block_shadow_alt: color.adjust($color_veryGreen, $alpha: -0.8);
+$ui_color_mobile_menu_bg: color.adjust($color_blueishBlack, $alpha: -0.05);
+$ui_color_mobile_menu_shadow: color.adjust($color_deepBlack, $alpha: -0.5);
+$ui_color_card_bg: $color_darkTeal;
+$ui_color_staked_bg: $color_deelBlue;
+$ui_color_share_label: $color_potionBlueish;
+$ui_color_share_value: $color_oceanBlue;
+$ui_color_card_arrow: color.adjust($color_darkTeal, $lightness: 1%);
+$ui_color_card_border: color.adjust($color_pureWhite, $alpha: -0.85);
+$ui_color_card_shadow: $color_featherBlue;
+$ui_color_card_inner_shadow: $color_darkerTeal;
+
+@mixin BackgroundGradient($deg: 265deg) {
+  background: linear-gradient($deg, 
+    $color_lightBlue 4.66%, 
+    $color_cyanGreen 51.89%, 
+    $color_yellowGreen 98.62%
+  );
+}
+
+@mixin BackgroundAltGradient($deg: 180deg) {
+  background: linear-gradient($deg, 
+    color.adjust($color_blueBlack, $alpha: -0.5) 0%,
+    color.adjust($color_blueishBlack, $alpha: -0.5) 100%
+  );
+}
+
+@mixin BackgroundShareCardGradient($deg: 124deg) {
+  background: linear-gradient($deg, 
+    $color_blueishBlack 10%,
+    $color_deepBlack 70%
+  );
+}
+
+@mixin BorderGradient($deg: 280deg) {
+  background: linear-gradient($deg, 
+    $color_lightishBlue 16.14%, 
+    $color_cyanishGreen 49.3%,
+    $color_yellowishGreen 89.09%
+  );
+}

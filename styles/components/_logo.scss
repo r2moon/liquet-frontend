@@ -1,0 +1,73 @@
+.ms-logo {
+  display: flex;
+  flex-flow: column;
+  gap: rem(18);
+ 
+  @include screenSize('tablet') {
+    flex-flow: row;
+  }
+ 
+  @include screenSize('desktop') {
+    display: flex;
+    align-items: center;
+    gap: rem(24);
+  }
+
+  &__link {
+    outline: none;
+    text-decoration: none;
+  }
+
+  &__icon {
+    width: rem(200);
+  }
+
+  &__app-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: rem(6) 0;
+    font-family: '#{map-get($font, "ocra")}';
+    line-height: rem(16);
+    font-size: rem(16);
+    font-weight: 400;
+    opacity: 0.4;
+ 
+    @include screenSize('tablet') {
+      justify-content: flex-start;
+    }
+ 
+    @include screenSize('desktop') {
+      padding: 0 0 0 rem(24);
+      line-height: rem(20);
+      font-size: rem(20);
+    }
+  
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      height: 100%;
+      width: rem(1);
+      background-color: $ui_color_text;
+      opacity: 0.4;
+ 
+      @include screenSize('desktop') {
+        content: '';
+      }
+    }
+
+    span {
+      padding: 0 rem(12);
+      font-size: rem(12);
+      font-weight: 400;
+      color: $ui_color_text_alt;
+ 
+      @include screenSize('desktop') {
+        font-size: rem(18);
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+.ms-input,
+.chakra-input.ms-input {
+  position: relative;
+  display: flex;
+  margin: 0;
+  padding: rem(8) rem(16);
+  height: auto;
+  min-height: rem(38);
+  background-color: $ui_color_input_bg;
+  border-radius: rem(18) 0 0 rem(18);
+  outline: none;
+  font-size: rem(16);
+  line-height: rem(20);
+  color: $ui_color_text;
+  text-transform: initial;
+  transition: all 0.15s ease-out 0s;
+  
+  &:hover,
+  &:focus {
+    filter: brightness(1.1);
+  }
+
+  &:focus {
+    border: rem(1) solid $ui_color_input_active_border;
+    box-shadow: inset 0 0 0 rem(1) $ui_color_input_active_border;
+  }
+
+  &--small {
+    padding: rem(2) rem(6);
+    min-height: rem(24);
+    border-radius: rem(4) 0 0 rem(4);
+    font-size: rem(14);
+    line-height: rem(18);
+  }
+}
+
+.ms-input-addon,
+.chakra-input__right-addon.ms-input-addon {
+  min-height: rem(38);
+  background-color: $ui_color_button_light_bg;
+  border-radius: 0 rem(18) rem(18) 0;
+
+  &--small {
+    padding-left: rem(5);
+    min-height: rem(24);
+    border-radius: 0 rem(4) rem(4) 0;
+  }
+}
+
+.ms-input-button,
+.chakra-input__right-element.ms-input-button {
+  min-height: rem(38);
+
+  .chakra-button:focus {
+    box-shadow: none;
+  }
+}

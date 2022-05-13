@@ -1,0 +1,47 @@
+.ms-slippage {
+  margin: rem(12) 0;
+  padding: rem(6) rem(12) rem(12);
+  background-color: $ui_color_block_light_bg;
+  border-radius: rem(12);
+
+  &__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: rem(12) 0 0;
+    border-radius: rem(6);
+    overflow: hidden;
+
+    @include screenSize('midres') {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: rem(4) rem(6);
+    width: 33.3%;
+    background-color: $ui_color_block_light_bg;
+    cursor: pointer;
+
+    @include screenSize('midres') {
+      flex: 1;
+      width: auto;
+    }
+
+    &--custom {
+      width: 100%;
+      cursor: default;
+
+      @include screenSize('midres') {
+        flex: 4;
+        width: auto;
+      }
+    }
+
+    &--active {
+      background-color: $ui_color_block_dark_bg;
+    }
+  }
+}

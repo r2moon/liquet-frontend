@@ -1,0 +1,50 @@
+.ms-grid {
+  position: relative;
+  padding: 0 rem(18) rem(18);
+  width: 100%;
+  min-height: 100%;
+ 
+  @include screenSize('desktop') {
+    display: grid;
+    gap: rem(12);
+    grid-template-columns: 1fr 50% 1fr;
+    grid-template-rows: 70% 1fr;
+    grid-template-areas: 
+      "panel chart market"
+      "panel positions positions";
+  }
+ 
+  @include screenSize('highres') {
+    grid-template-columns: 1fr 60% 1fr;
+  }
+
+  &__item {
+    position: relative;
+    margin: rem(24) 0;
+ 
+    @include screenSize('desktop') {
+      margin: 0;
+    }
+
+    &--panel {
+      grid-area: panel;
+    }
+
+    &--chart {
+      grid-area: chart;
+    }
+
+    &--market {
+      grid-area: market;
+      height: rem(600);
+ 
+      @include screenSize('desktop') {
+        height: auto;
+      }
+    }
+
+    &--positions {
+      grid-area: positions;
+    }
+  }
+}

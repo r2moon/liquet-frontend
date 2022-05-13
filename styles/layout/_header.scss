@@ -1,0 +1,57 @@
+.ms-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: rem(24);
+  padding: rem(12) rem(24);
+  width: 100%;
+ 
+  @include screenSize('tablet') {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+ 
+  @include screenSize('desktop') {
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    outline: none;
+    text-decoration: none;
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: rem(5) 0;
+    background-color: $ui_color_mobile_menu_bg;
+    box-shadow: 0 0 rem(24) 0 $ui_color_mobile_menu_shadow;
+    color: $ui_color_text;
+
+    @include screenSize('tablet') {
+      position: relative;
+      z-index: initial;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      justify-content: center;
+      padding: 0;
+      width: auto;
+      background-color: transparent;
+      box-shadow: none;
+    }
+ 
+    @include screenSize('desktop') {
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+    }
+  }
+}

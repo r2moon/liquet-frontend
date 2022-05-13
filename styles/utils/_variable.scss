@@ -1,0 +1,93 @@
+@use "sass:color";
+
+@import "./function";
+
+// FONTS
+$font: (
+  "ocra": "OcrA",
+  "arial": "Arial",
+  "numeric": "Chakra Petch",
+  "overpass": "Overpass",
+  "work": "Work Sans",
+  "dm": "DM Sans"
+);
+
+// TYPO
+$typo: (
+  "font": map-get($font, "numeric"),
+  "size": 14,
+  "weight": 400
+);
+
+// BREAKPOINTS
+$breakpoint: (
+  "high_3": 3840px,
+  "high_2": 2560px,
+  "high_1": 1920px,
+  "normal_3": 1650px,
+  "normal_2": 1368px,
+  "normal_1": 1024px,
+  "medium_3": 960px,
+  "medium_2": 872px,
+  "medium_1": 768px,
+  "low_3": 640px,
+  "low_2": 480px,
+  "low_1": 360px
+);
+
+// Z-INDEX
+$z-index: (
+  "header": 25
+);
+
+// COLORS
+// Colors must be in HSL(A)
+// For themes, switch from scss props to css properties
+
+// Base colors:
+$color_richBlack: hsl(210, 50%, 1%);
+$color_blue: #2e7eff;
+$color_blue_gradient: #4089fe;
+$color_culturedWhite: hsl(0, 0%, 96%);
+$color_deepGrey: hsl(132, 12%, 8%);
+$color_asphaltGrey: hsl(188, 51%, 6%);
+$color_acidGreen: hsl(146, 53%, 20%);
+$color_sellRed: hsl(355deg, 100%, 64%);
+
+// UI colors:
+$ui_color_text: $color_culturedWhite;
+$ui_color_text_alt: $color_blue;
+$ui_color_text_alt2: $color_acidGreen;
+$ui_color_text_success: $color_blue;
+$ui_color_text_warning: $color_sellRed;
+$ui_color_body_bg: $color_richBlack;
+$ui_color_layout_bg: $color_deepGrey;
+$ui_color_block_bg: color.adjust($color_richBlack, $alpha: -0.7);
+$ui_color_block_el_bg: color.adjust($color_richBlack, $alpha: -0.5);
+$ui_color_block_dark_bg: color.adjust($color_richBlack, $alpha: -0.9);
+$ui_color_block_light_bg: color.adjust($color_culturedWhite, $alpha: -0.92);
+$ui_color_block_active_border: $color_blue;
+$ui_color_block_shadow: color.adjust($color_richBlack, $alpha: -0.1);
+$ui_color_button_bg: $color_blue;
+$ui_color_button_bg_gradient: $color_blue_gradient;
+$ui_color_button_action_border: color.adjust($color_culturedWhite, $alpha: -0.7);
+$ui_color_button_bg_alt: $color_sellRed;
+$ui_color_button_bg_alt_gradient: color.adjust($color_sellRed, $lightness: 5%);
+$ui_color_button_light_bg: color.adjust($color_culturedWhite, $alpha: -0.92);
+$ui_color_button_light_hover_bg: color.adjust($color_culturedWhite, $alpha: -0.87);
+$ui_color_button_dark_bg: color.adjust($color_richBlack, $alpha: -0.5);
+$ui_color_button_dark_hover_bg: color.adjust($color_richBlack, $alpha: -0.3);
+$ui_color_button_transparent_bg: color.adjust($color_richBlack, $alpha: -0.8);
+$ui_color_input_bg: color.adjust($color_richBlack, $alpha: -0.8);
+$ui_color_input_active_border: $color_blue;
+$ui_color_modal_bg: color.adjust($color_asphaltGrey, $lightness: 2%);
+$ui_color_modal_bg_gradient: color.adjust($color_asphaltGrey, $lightness: 6%);
+$ui_color_modal_action_bg: color.adjust($color_richBlack, $alpha: -0.7);
+$ui_color_modal_overlay_bg: color.adjust($color_richBlack, $alpha: -0.5);
+$ui_color_scrollbar_bg: color.adjust($color_richBlack, $alpha: -0.7);
+$ui_color_scrollbar_bg_hover: $color_blue;
+$ui_color_scrollbar_track_bg: color.adjust($color_richBlack, $alpha: -0.95);
+$ui_color_dropdown_bg: color.adjust($color_asphaltGrey, $lightness: 2%, $alpha: -0.01);
+$ui_color_dropdown_bg_gradient: color.adjust($color_asphaltGrey, $lightness: 6%, $alpha: -0.01);
+$ui_color_chain_dropdown_bg: color.adjust($color_culturedWhite, $alpha: -0.95);
+$ui_color_swap_shadow: color.adjust($color_richBlack, $alpha: -0.1);

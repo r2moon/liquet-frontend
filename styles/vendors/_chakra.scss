@@ -1,0 +1,69 @@
+.chakra-slider {
+
+  &__filled-track {
+    background-color: $ui_color_input_active_border !important;
+  }
+  
+  &__thumb:focus {
+    box-shadow: 0 0 0 rem(2) $ui_color_input_active_border !important;
+  }
+}
+
+.chakra-modal {
+  $modal: &;
+
+  &__overlay {
+    background-color: $ui_color_modal_overlay_bg;
+    backdrop-filter: blur(3px);
+  }
+
+  &__content-container {
+    align-items: center !important;
+
+    #{$modal}__content {
+      width: 90vw;
+      max-width: rem(520);
+      max-height: 90vh;
+      background: $ui_color_modal_bg;
+      background: linear-gradient(36deg, $ui_color_modal_bg 0%, $ui_color_modal_bg_gradient 100%);
+      border-radius: rem(18);
+      box-shadow: 0 rem(40) rem(32) rem(-40) $ui_color_swap_shadow;
+      overflow: hidden;
+      overflow-y: auto;
+    }
+
+    #{$modal}__header {
+      padding: rem(18);
+      background-color: $ui_color_modal_action_bg;
+    }
+
+    #{$modal}__body {
+      padding: rem(12) rem(18) rem(18);
+    }
+  }
+}
+
+.chakra-popover {
+  $popopver: &;
+
+  &__popper {
+
+    #{$popopver}__content {
+      min-width: rem(300);
+      background-color: $ui_color_dropdown_bg;
+      border-radius: 12px;
+      border: none;
+    }
+  
+    #{$popopver}__arrow {
+      background: $ui_color_dropdown_bg !important;
+    }
+  }
+}
+
+.chakra-switch {
+
+  &__track[data-checked] {
+    background: $ui_color_button_bg_gradient !important;
+  }
+}

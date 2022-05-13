@@ -1,0 +1,15 @@
+.ml-block {
+  margin: rem(12) 0;
+  padding: rem(12);
+  border-radius: rem(12);
+
+  &--inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+  }
+
+  &--highlighted {
+    background-color: $ui_color_block_light_bg;
+  }
+}

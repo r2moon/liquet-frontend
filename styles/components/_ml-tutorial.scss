@@ -1,0 +1,296 @@
+.ml-tutorial {
+  $tutorial: &;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  backdrop-filter: blur(rem(10));
+
+  * {
+    font-family: '#{map-get($font, "work")}';
+  }
+  
+  &__overlay {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $ui_color_body_bg;
+    opacity: .5;
+  }
+
+  &__step {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(0, rem(-30), 0);
+    transition: transform 600ms cubic-bezier(0.17,0.84,0.44,1) 0ms;
+
+    .ml-card * {
+      opacity: 0;
+      transition: opacity 400ms ease-out 0ms;
+    }
+
+    &__content * {
+      font-size: rem(15);
+      line-height: rem(26);
+      color: $ui_color_text_alt;
+
+      a {
+        font-weight: 600;
+        color: $ui_color_text;
+        text-decoration: underline;
+      }
+    }
+
+    &__image {
+      margin: 0 auto rem(30);
+    }
+
+    &__title {
+      margin: rem(10) 0;
+      font-family: '#{map-get($font, "overpass")}';
+      font-weight: 600;
+      font-size: rem(26);
+      line-height: rem(30);
+      color: $ui_color_text;
+    }
+
+    &__description {
+      margin: rem(30) 0;
+      width: 100%;
+    }
+
+    &__info-list {
+      margin: rem(30) 0;
+      padding: 0 0 0 rem(12 + 8);
+      width: 100%;
+      text-align: left;
+      list-style: disc outside url('../../assets/svg/bullet.svg');
+
+      ::marker {
+        box-shadow: 0 rem(3) rem(10) 0 $ui_color_block_shadow;
+      }
+    }
+
+    &__info-item {
+      margin: rem(8) 0;
+      padding: 0 0 0 rem(8);
+    }
+
+    &__agreement {
+      margin: rem(30) 0;
+      width: 100%;
+      text-align: left;
+    }
+
+    &__counter {
+      margin: rem(30) 0 0;
+
+      * {
+        font-family: '#{map-get($font, "overpass")}';
+        font-size: rem(16);
+        line-height: rem(26);
+        color: $ui_color_text_alt;
+      }
+
+      &__current {
+        font-weight: 700;
+        color: $ui_color_text;
+      }
+
+      &__all {
+        padding: 0 0 0 rem(6);
+      }
+    }
+
+    &__action {
+
+      &--inline {
+ 
+        @include screenSize('desktop') {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: row-reverse;
+        }
+      }
+    }
+
+    &--dialog {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      bottom: auto;
+      height: 100vh;
+    }
+    
+    &--active {
+      z-index: 3;
+      opacity: 1;
+      pointer-events: all;
+      transform: translate3d(0, 0, 0);
+
+      .ml-card * {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__dialog {
+    display: block;
+    padding: rem(40);
+    max-width: rem(460);
+  }
+
+  &__helper {
+    position: absolute;
+    display: block;
+    max-width: rem(412);
+    border: none;
+
+    @include screenSize('desktop') {
+
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        left: rem(32);
+        top: rem(-16);
+        width: 0; 
+        height: 0; 
+        border-left: rem(16) solid transparent;
+        border-right: rem(16) solid transparent;
+        border-bottom: rem(16) solid $ui_color_card_arrow;
+      }
+
+      &--left-top::before {
+        top: rem(32);
+        left: rem(-16);
+        border-left: none;
+        border-top: rem(16) solid transparent;
+        border-bottom: rem(16) solid transparent;
+        border-right: rem(16) solid $ui_color_card_arrow;
+      }
+
+      &--left-bottom::before {
+        top: auto;
+        bottom: rem(32);
+        left: rem(-16);
+        border-left: none;
+        border-top: rem(16) solid transparent;
+        border-bottom: rem(16) solid transparent;
+        border-right: rem(16) solid $ui_color_card_arrow;
+      }
+
+      &--bottom-left::before {
+        top: auto;
+        bottom: rem(-16);
+        left: rem(32);
+        border-left: rem(16) solid transparent;
+        border-right: rem(16) solid transparent;
+        border-top: rem(16) solid $ui_color_card_arrow;
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__button {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &--step-2 #{$tutorial}__helper {
+    top: rem(300);
+    margin: 0 rem(20);
+ 
+    @include screenSize('desktop') {
+      top: 0;
+      left: 25%;
+      margin: rem(72) 0 0 rem(20);
+    }
+  }
+
+  &--step-3 #{$tutorial}__helper {
+    top: rem(565);
+    margin: 0 rem(20);
+ 
+    @include screenSize('desktop') {
+      top: rem(170);
+      left: 25%;
+      margin: rem(72) 0 0 rem(20);
+    }
+  }
+
+  &--step-4 #{$tutorial}__helper {
+    top: rem(655);
+    margin: 0 rem(20);
+ 
+    @include screenSize('desktop') {
+      top: rem(325);
+      left: 25%;
+      margin: rem(72) 0 0 rem(20);
+    }
+  }
+
+  &--step-5 #{$tutorial}__helper {
+    top: rem(840);
+    margin: 0 rem(20);
+ 
+    @include screenSize('desktop') {
+      top: rem(395);
+      left: 25%;
+      margin: rem(72) 0 0 rem(20);
+    }
+  }
+
+  &--step-6 #{$tutorial}__helper {
+    top: rem(1125);
+    margin: 0 rem(20);
+ 
+    @include screenSize('desktop') {
+      top: auto;
+      bottom: rem(20);
+      left: 25%;
+      margin: rem(72) 0 0 rem(20);
+    }
+  }
+
+  &--step-7 #{$tutorial}__helper {
+    top: rem(1260);
+    margin: 0 rem(20);
+ 
+    @include screenSize('desktop') {
+      top: auto;
+      bottom: 30%;
+      left: 25%;
+      margin: 0 0 rem(20);
+    }
+  }
+
+  $stepCount: 8;
+  @for $i from 0 through $stepCount {
+
+    & + * .ml-tutorial-highlight-#{$i} {
+      filter: blur(rem(10));
+      transition: filter 400ms ease-out 0ms;
+    }
+    
+    &--step-#{$i} + * .ml-tutorial-highlight-#{$i} {
+      position: relative;
+      z-index: 1000;
+      border: rem(1) solid $ui_color_card_border;
+      border-radius: rem(10);
+      filter: blur(rem(0));
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.ms-dropdown,
+.chakra-menu__menu-list.ms-dropdown {
+  z-index: 1000;
+  padding: rem(12);
+  max-height: 80vh;
+  background: $ui_color_dropdown_bg;
+  background: linear-gradient(36deg, $ui_color_dropdown_bg 0%, $ui_color_dropdown_bg_gradient 100%);
+  border: none;
+  border-radius: rem(12);
+  box-shadow: 0 rem(40) rem(32) rem(-40) $ui_color_swap_shadow;
+  
+  * {
+    font-family: '#{map-get($font, "ocra")}';
+  }
+
+  &__item,
+  .chakra-menu__menuitem {
+    display: flex;
+    align-items: center;
+    gap: rem(12);
+    padding: rem(6) rem(12);
+    border-radius: rem(6);
+    cursor: pointer;
+    transition: all .15s ease-in-out 0s;
+
+    &:hover {
+      background-color: $ui_color_chain_dropdown_bg;
+    }
+  }
+}

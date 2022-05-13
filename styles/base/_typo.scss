@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600&display=swap');
+
+@font-face {
+    font-family: 'OcrA';
+    src: url('./../../assets/font/OcrA-Regular.woff2') format('woff2'),
+        url('./../../assets/font/OcrA-Regular.woff') format('woff'),
+        url('./../../assets/font/OcrA-Regular.svg#OcrA-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-size: rem(map-get($typo, "size"));
+}
+
+body * {
+    font-family: '#{map-get($typo, "font")}';
+}
+
+.ms-typo {
+
+    &--matrix,
+    &--matrix * {
+        font-size: inherit;
+        font-family: '#{map-get($font, "ocra")}';
+        font-weight: inherit;
+    }
+
+    &--reset,
+    &--reset * {
+        font-family: '#{map-get($font, "arial")}';
+        font-weight: 600;
+    }
+}

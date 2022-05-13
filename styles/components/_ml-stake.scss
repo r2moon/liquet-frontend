@@ -1,0 +1,118 @@
+// NOTE: This contains only a few fix regarding spacing and responsivity
+// TODO: Implement the new, rebranded design on this section too and 
+// remove body wrapper selector after the refactor of the template
+
+body .ml-stake {
+  $stake: &;
+  display: flex;
+  justify-content: center;
+  padding: rem(20) rem(30) rem(40);
+  width: 100%;
+
+  * {
+    font-family: '#{map-get($font, "work")}';
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+    padding: rem(100) 0 rem(200);
+    width: 100%;
+    max-width: rem(1280);
+  }
+
+  &__title {
+    margin: rem(20) 0;
+
+    * {
+      font-family: '#{map-get($font, "overpass")}';
+    }
+  }
+
+  &__description {
+    margin: rem(20) 0;
+    font-size: rem(16);
+  }
+
+  &__dashboard {
+    margin: rem(40) 0;
+
+    &__container {
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      gap: rem(20);
+ 
+      @include screenSize('desktop') {
+        flex-flow: row;
+      }
+    }
+
+    &__column {
+      position: relative;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      border-radius: rem(20);
+ 
+      @include screenSize('desktop') {
+        min-height: rem(350);
+      }
+
+      &--left {
+        flex: 1;
+        gap: rem(20);
+      }
+
+      &--right {
+        @include BackgroundAltGradient;
+        gap: rem(10);
+        padding: rem(18.5 + 1.5);
+        backdrop-filter: blur(rem(3));
+        box-shadow: 
+          0 rem(10) rem(30) 0 $ui_color_block_shadow_alt,
+          0 rem(3) rem(5) 0 $ui_color_block_shadow_alt;
+ 
+          @include screenSize('desktop') {
+            width: 40%;
+          }
+  
+        &::before {
+          @include BorderGradient;
+          content: '';
+          position: absolute;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: rem(2);
+          border-radius: rem(20);
+          -webkit-mask: 
+            linear-gradient(black 0 0) content-box, 
+            linear-gradient(black 0 0);
+          -webkit-mask-composite: source-out;
+          mask-composite: exclude;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+  
+  &__box {
+    padding: rem(20);
+    border-radius: rem(20);
+
+    &--apr {
+      @include BackgroundGradient;
+      height: 33%;
+    }
+
+    &--staked {
+      background-color: $ui_color_staked_bg;
+      flex: 1;
+    }
+  }
+}
